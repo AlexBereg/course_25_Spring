@@ -29,4 +29,9 @@ public class EmployeeController {
                                  firstName, @RequestParam(value = "lastName") String lastName) {
         return employeeService.removeEml(firstName, lastName);
     }
+
+    @GetMapping(path = "/all")
+    public String allPrint() {
+        return employeeService.allPrint();
+    }
 }

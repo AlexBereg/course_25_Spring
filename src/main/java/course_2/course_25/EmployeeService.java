@@ -7,4 +7,6 @@ public interface EmployeeService {
 //    Boolean findEml(Employee employee);
 
     String findEml(String firstName, String lastName);
+
+    String allPrint();
 }

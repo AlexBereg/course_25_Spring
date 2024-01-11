@@ -56,6 +56,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public String allPrint() {
+        return emloyeeList.toString();
+    }
+
+    @Override
     public String removeEml(String firstName, String lastName) {
         try {
             checkingListNot(firstName, lastName);
