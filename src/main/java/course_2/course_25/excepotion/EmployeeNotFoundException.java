@@ -1,4 +1,4 @@
-package course_2.course_25;
+package course_2.course_25.excepotion;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 

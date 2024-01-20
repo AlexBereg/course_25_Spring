@@ -1,5 +1,6 @@
-package course_2.course_25;
+package course_2.course_25.excepotion;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 //выбрасывается, когда нового сотрудника пытаются добавить в коллекцию, а в коллекции уже есть такой сотрудник.
