@@ -1,4 +1,4 @@
-package course_2.course_25;
+package course_2.course_25.service;
 
 public interface EmployeeService {
     String addEml(String firstName, String lastName);
