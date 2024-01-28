@@ -16,8 +16,11 @@ public class EmployeeController {
     }
 
     @GetMapping(path = "/add")
-    public String add(@RequestParam(value = "firstName") String firstName, @RequestParam(value = "lastName") String lastName) {
-        return employeeService.addEml(firstName, lastName);
+    public String add(@RequestParam(value = "firstName") String firstName,
+                      @RequestParam(value = "lastName") String lastName,
+                      @RequestParam(value = "department") int department,
+                      @RequestParam(value = "salary") int salary) {
+        return employeeService.addEml(firstName, lastName, department, salary);
     }
 
     @GetMapping(path = "/find")
