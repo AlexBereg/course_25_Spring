@@ -14,7 +14,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 //    public EmployeeServiceImpl() {
 
     static Map<String, Employee> employeeMap = new HashMap<>();
-    static int maxEml = 2;
+    static int maxEml = 5;
 
     public static void checkingMap(String key) {
         if (employeeMap.get(key) != null) {
@@ -35,13 +35,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public String addEml(String firstName, String lastName) {
+    public String addEml(String firstName, String lastName, int department, int salary) {
         String key = firstName.toUpperCase() + "*" + lastName.toUpperCase();
         try {
             checkingMapLength();
             try {
                 checkingMap(key);
-                Employee employee = new Employee(firstName, lastName);
+                Employee employee = new Employee(firstName, lastName, department, salary);
                 employeeMap.put(key, employee);
                 return employee.toString();
             } catch (EmployeeAlreadyAddedException e) {
@@ -50,6 +50,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         } catch (EmployeeStorageIsFullException e) {
             return e.getMessage();
         }
+    }
+
+    @Override
+    public String removeEml(String firstName, String lastName, int department, int salary) {
+        return null;
+    }
+
+    @Override
+    public String findEml(String firstName, String lastName, int department, int salary) {
+        return null;
     }
 
     @Override
@@ -63,6 +73,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         } catch (EmployeeNotFoundException e) {
             return e.getMessage();
         }
+    }
+
+    @Override
+    public Collection<Employee> getAll() {
+        return Collections.unmodifiableCollection(employeeMap.values());
     }
 
     @Override

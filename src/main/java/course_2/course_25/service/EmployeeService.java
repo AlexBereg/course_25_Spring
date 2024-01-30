@@ -1,12 +1,23 @@
 package course_2.course_25.service;
 
-public interface EmployeeService {
-    String addEml(String firstName, String lastName);
+import course_2.course_25.model.Employee;
 
-    String removeEml(String firstName, String lastName);
+import java.util.Collection;
+
+public interface EmployeeService {
+    String addEml(String firstName, String lastName, int department, int salary);
+
+    String removeEml(String firstName, String lastName, int department, int salary);
 //    Boolean findEml(Employee employee);
+
+    String findEml(String firstName, String lastName, int department, int salary);
+
+    String allPrint();
 
     String findEml(String firstName, String lastName);
 
-    String allPrint();
+    String removeEml(String firstName, String lastName);
+
+    public Collection<Employee> getAll();
+
 }
