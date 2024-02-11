@@ -1,5 +1,6 @@
 package course_2.course_25.controller;
 
+import course_2.course_25.model.Employee;
 import course_2.course_25.service.DepartmentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,13 +17,13 @@ public class DepartmentController {
     }
 
     @GetMapping(path = "/max-salary")
-    public String maxSalaryDep(@RequestParam(value = "departmentId") int departmentId) {
-        return departmentService.findMaxSalary(departmentId).toString();
+    public Employee maxSalaryDep(@RequestParam(value = "departmentId") int departmentId) {
+        return departmentService.findMaxSalary(departmentId);
     }
 
     @GetMapping(path = "/min-salary")
-    public String minSalaryDep(@RequestParam(value = "departmentId") int departmentId) {
-        return departmentService.findMinSalary(departmentId).toString();
+    public Employee minSalaryDep(@RequestParam(value = "departmentId") int departmentId) {
+        return departmentService.findMinSalary(departmentId);
     }
 
     @GetMapping("/all" )
@@ -30,7 +31,7 @@ public class DepartmentController {
         return departmentService.groupDepart().toString();
     }
     @GetMapping(value = "/all", params ={"departmentId"})
-    public String allByDep(@RequestParam(value = "departmentId") int departmentId) {
-        return departmentService.findByDepart(departmentId).toString();
+    public Employee allByDep(@RequestParam(value = "departmentId") int departmentId) {
+        return (Employee) departmentService.findByDepart(departmentId);
     }
 }

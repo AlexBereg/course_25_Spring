@@ -4,6 +4,7 @@ import course_2.course_25.model.Employee;
 import course_2.course_25.excepotion.EmployeeAlreadyAddedException;
 import course_2.course_25.excepotion.EmployeeNotFoundException;
 import course_2.course_25.excepotion.EmployeeStorageIsFullException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -36,12 +37,16 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public String addEml(String firstName, String lastName, int department, int salary) {
+        if (!StringUtils.isAlpha(firstName) || !StringUtils.isAlpha(lastName)) {
+            throw new NameException("Некорректно введены данные!");
+        }
+
         String key = firstName.toUpperCase() + "*" + lastName.toUpperCase();
         try {
             checkingMapLength();
             try {
                 checkingMap(key);
-                Employee employee = new Employee(firstName, lastName, department, salary);
+                Employee employee = new Employee(StringUtils.capitalize(firstName), StringUtils.capitalize(lastName), department, salary);
                 employeeMap.put(key, employee);
                 return employee.toString();
             } catch (EmployeeAlreadyAddedException e) {
