@@ -1,4 +1,4 @@
-package course_2.course_25.service;
+package course_2.course_25.excepotion;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

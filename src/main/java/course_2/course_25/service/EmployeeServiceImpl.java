@@ -1,5 +1,6 @@
 package course_2.course_25.service;
 
+import course_2.course_25.excepotion.NameException;
 import course_2.course_25.model.Employee;
 import course_2.course_25.excepotion.EmployeeAlreadyAddedException;
 import course_2.course_25.excepotion.EmployeeNotFoundException;
@@ -11,8 +12,6 @@ import java.util.*;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-
-//    public EmployeeServiceImpl() {
 
     static Map<String, Employee> employeeMap = new HashMap<>();
     static int maxEml = 5;
@@ -55,16 +54,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         } catch (EmployeeStorageIsFullException e) {
             return e.getMessage();
         }
-    }
-
-    @Override
-    public String removeEml(String firstName, String lastName, int department, int salary) {
-        return null;
-    }
-
-    @Override
-    public String findEml(String firstName, String lastName, int department, int salary) {
-        return null;
     }
 
     @Override
