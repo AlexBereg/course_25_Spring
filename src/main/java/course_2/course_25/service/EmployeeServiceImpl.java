@@ -13,22 +13,22 @@ import java.util.*;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    static Map<String, Employee> employeeMap = new HashMap<>();
-    static int maxEml = 5;
+    private Map<String, Employee> employeeMap = new HashMap<>();
+    private int maxEml = 5;
 
-    public static void checkingMap(String key) {
+    private void checkingMap(String key) {
         if (employeeMap.get(key) != null) {
             throw new EmployeeAlreadyAddedException("EmployeeAlreadyAdded (Уже есть сотрудник!!)");
         }
     }
 
-    public static void checkingMapLength() {
+    private void checkingMapLength() {
         if (employeeMap.size() >= maxEml) {
             throw new EmployeeStorageIsFullException("ArrayIsFull (Переполнен)");
         }
     }
 
-    public static void checkingMapNot(String key) {
+    private  void checkingMapNot(String key) {
         if (employeeMap.get(key) == null) {
             throw new EmployeeNotFoundException("EmployeeNotFound (Нет сотрудника!)");
         }
