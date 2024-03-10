@@ -14,6 +14,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
 import static org.mockito.Mockito.when;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class)
 class DepartmentServiceTest {
@@ -42,7 +43,7 @@ class DepartmentServiceTest {
     @Test
     void findMinSalaryTest() {
         var actual = departmentService.findMinSalary(1);
-        assertThat(actual.getFirstName().equals("test"));
+        assertThat(actual.getFirstName()).isEqualTo("test");
     }
 
     @Test

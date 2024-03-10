@@ -13,22 +13,22 @@ import java.util.*;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
-    static Map<String, Employee> employeeMap = new HashMap<>();
-    static int maxEml = 5;
+    private Map<String, Employee> employeeMap = new HashMap<>();
+    private int maxEml = 5;
 
-    public static void checkingMap(String key) {
+    private void checkingMap(String key) {
         if (employeeMap.get(key) != null) {
             throw new EmployeeAlreadyAddedException("EmployeeAlreadyAdded (Уже есть сотрудник!!)");
         }
     }
 
-    public static void checkingMapLength() {
+    private void checkingMapLength() {
         if (employeeMap.size() >= maxEml) {
             throw new EmployeeStorageIsFullException("ArrayIsFull (Переполнен)");
         }
     }
 
-    public static void checkingMapNot(String key) {
+    private  void checkingMapNot(String key) {
         if (employeeMap.get(key) == null) {
             throw new EmployeeNotFoundException("EmployeeNotFound (Нет сотрудника!)");
         }
@@ -41,32 +41,32 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
 
         String key = firstName.toUpperCase() + "*" + lastName.toUpperCase();
-        try {
+//        try {
             checkingMapLength();
-            try {
+//            try {
                 checkingMap(key);
                 Employee employee = new Employee(StringUtils.capitalize(firstName), StringUtils.capitalize(lastName), department, salary);
                 employeeMap.put(key, employee);
                 return employee.toString();
-            } catch (EmployeeAlreadyAddedException e) {
-                return e.getMessage();
-            }
-        } catch (EmployeeStorageIsFullException e) {
-            return e.getMessage();
-        }
+//            } catch (EmployeeAlreadyAddedException e) {
+//                return e.getMessage();
+//            }
+//        } catch (EmployeeStorageIsFullException e) {
+//            return e.getMessage();
+//        }
     }
 
     @Override
     public String removeEml(String firstName, String lastName) {
         String key = firstName.toUpperCase() + "*" + lastName.toUpperCase();
-        try {
+//        try {
             checkingMapNot(key);
             Employee employee2 = employeeMap.get(key);
             employeeMap.remove(key);
             return employee2.toString();
-        } catch (EmployeeNotFoundException e) {
-            return e.getMessage();
-        }
+//        } catch (EmployeeNotFoundException e) {
+//            return e.getMessage();
+//        }
     }
 
     @Override
@@ -77,12 +77,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public String findEml(String firstName, String lastName) {
         String key = firstName.toUpperCase() + "*" + lastName.toUpperCase();
-        try {
+//        try {
             checkingMapNot(key);
             return employeeMap.get(key).toString();
-        } catch (EmployeeNotFoundException e) {
-            return e.getMessage();
-        }
+//        } catch (EmployeeNotFoundException e) {
+//            return e.getMessage();
+//        }
     }
 
     @Override

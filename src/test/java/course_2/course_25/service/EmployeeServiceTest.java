@@ -16,13 +16,13 @@ class EmployeeServiceTest {
     @Test
     void addEmlTest() {
         employeeService.addEml("ivan", "ivanov", 1, 10000);
-        employeeService.addEml("Ivana", "Ivanova", 2, 20000);
+        employeeService.addEml("ivana", "Ivanova", 2, 20000);
 
         var actual1 = employeeService.findEml("Ivan", "Ivanov");
         assertThat(actual1).isNotNull();
         assertThat(actual1.toString().equals("Ivan Ivanov"));
 
-        var actual2 = employeeService.findEml("Ivana", "Ivanov");
+        var actual2 = employeeService.findEml("Ivana", "Ivanova");
         assertThat(actual2).isNotNull();
         assertThat(actual2.toString().equals("Ivana Ivanova"));
     }
@@ -32,16 +32,6 @@ class EmployeeServiceTest {
         employeeService.addEml("ivan", "ivanov", 1, 10000);
         assertThrows(EmployeeAlreadyAddedException.class, () -> employeeService.addEml("ivan", "ivanov", 2, 20000));
     }
-
-    @Test
-    void TestFull() {
-        employeeService.addEml("a", "aa", 1, 10000);
-        employeeService.addEml("aa", "aa", 2, 10000);
-        employeeService.addEml("aaa", "aa", 1, 10000);
-        employeeService.addEml("aaaa", "aa", 1, 10000);
-        assertThrows(EmployeeStorageIsFullException.class, () -> employeeService.addEml("ivan", "ivanov", 2, 200));
-    }
-
     @Test
     void UncorrectedName() {
         assertThrows(NameException.class, () -> employeeService.addEml("ivan1", "1ivanov", 2, 200));
@@ -64,5 +54,14 @@ class EmployeeServiceTest {
                 new Employee("A", "Aa", 1, 10000),
                 new Employee("Aa", "Aa", 2, 10000)
         );
+    }
+    @Test
+    void TestFull() {
+        employeeService.addEml("a", "aa", 1, 10000);
+        employeeService.addEml("aa", "aa", 2, 10000);
+        employeeService.addEml("aaa", "aa", 1, 10000);
+        employeeService.addEml("aaaa", "aa", 1, 10000);
+        employeeService.addEml("aaaaa", "aaa", 1, 10000);
+        assertThrows(EmployeeStorageIsFullException.class, () -> employeeService.addEml("ivan", "ivanov", 2, 200));
     }
 }
