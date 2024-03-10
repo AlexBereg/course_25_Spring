@@ -6,16 +6,9 @@ import java.util.Collection;
 
 public interface EmployeeService {
     String addEml(String firstName, String lastName, int department, int salary);
-
-    String removeEml(String firstName, String lastName, int department, int salary);
-//    Boolean findEml(Employee employee);
-
-    String findEml(String firstName, String lastName, int department, int salary);
-
     String allPrint();
 
     String findEml(String firstName, String lastName);
-
     String removeEml(String firstName, String lastName);
 
     public Collection<Employee> getAll();

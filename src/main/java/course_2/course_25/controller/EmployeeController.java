@@ -20,7 +20,7 @@ public class EmployeeController {
                       @RequestParam(value = "lastName") String lastName,
                       @RequestParam(value = "department") int department,
                       @RequestParam(value = "salary") int salary) {
-        return employeeService.addEml(firstName, lastName, department, salary);
+        return employeeService.addEml(firstName, lastName, department, salary).toString().toString();
     }
 
     @GetMapping(path = "/find")
